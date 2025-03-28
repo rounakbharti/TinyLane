@@ -69,7 +69,7 @@ def url_view(request):
                 user=request.user,
                 expires_at=expires_at
             )
-            short_url = f"http://localhost:8000/api/r/{short_code}"
+            short_url = f"https://tinylane-73t2.onrender.com/api/r/{short_code}"
             return JsonResponse({
                 'short_url': short_url,
                 'original_url': url.original_url,
@@ -86,7 +86,7 @@ def url_view(request):
         try:
             urls = URL.objects.filter(user=request.user).order_by('-created_at')  # Latest first
             url_data = [{
-                'short_url': f"http://localhost:8000/api/r/{url.short_code}",
+                'short_url': f"https://tinylane-73t2.onrender.com/api/r/{url.short_code}",
                 'original_url': url.original_url,
                 'short_code': url.short_code,
                 'expires_at': url.expires_at.isoformat() if url.expires_at else None,
@@ -121,7 +121,7 @@ def get_url_analytics(request, short_code):
             'timestamp': click.timestamp.isoformat()
         } for click in url.clicks.all()]
         return JsonResponse({
-            'short_url': f"http://localhost:8000/api/r/{url.short_code}",
+            'short_url': f"https://tinylane-73t2.onrender.com/api/r/{url.short_code}",
             'original_url': url.original_url,
             'created_at': url.created_at.isoformat(),
             'expires_at': url.expires_at.isoformat() if url.expires_at else None,
