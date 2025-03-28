@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://tinylane-73t2.onrender.com' || '/api/';
+const API_BASE_URL = 'https://tinylane-73t2.onrender.com/api' || '/api/';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
