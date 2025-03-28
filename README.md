@@ -8,14 +8,14 @@ TinyLane is a URL shortening service similar to Bit.ly, designed to transform lo
 ## 📸 Demo Screenshots
 | Feature          | Image |
 |-----------------|-------|
-| SignUp       | ![Homepage](demo/img1.png) |
-| Short URL Output| ![Short URL](demo/img2.png) |
-| URL History     | ![History](demo/img3.png) |
-| Analytics       | ![Analytics](demo/img4.png) |
-| Click Details   | ![Click Logs](demo/img5.png) |
-| Expiration Set  | ![Expiration](demo/img6.png) |
-| Expired URL     | ![Expired](demo/img7.png) |
-| Admin Panel     | ![Admin](demo/img8.png) |
+| SignUp        | ![Homepage](demo/img2.png) |
+| Login| ![Short URL](demo/img1.png) |
+| Login successful     | ![History](demo/img3.png) |
+| Short URL Output       | ![Analytics](demo/img4.png) |
+| Homepage    | ![Click Logs](demo/img5.png) |
+| Homepage   | ![Expiration](demo/img6.png) |
+| Homepage      | ![Expired](demo/img7.png) |
+| Analytics     | ![Admin](demo/img8.png) |
 
 
 ## 🎯 Objective
