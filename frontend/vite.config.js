@@ -16,4 +16,11 @@ export default defineConfig({
       '@': '/src',
     },
   },
+  build: {
+    outDir: 'dist' // Ensure the correct output directory
+  },
+  base: '/', // Ensures correct routing in production
+  esbuild: {
+    jsxInject: `import React from 'react'`
+  }
 });
