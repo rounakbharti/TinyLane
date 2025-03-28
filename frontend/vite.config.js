@@ -17,10 +17,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: 'dist' // Ensure the correct output directory
+    outDir: 'dist'
   },
-  base: '/', // Ensures correct routing in production
-  esbuild: {
-    jsxInject: `import React from 'react'`
-  }
+  base: '/' // Ensures correct routing in production
 });
