@@ -1,11 +1,13 @@
+import os
 from pathlib import Path
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-abcdefghijklmnopqrstuvwxyz0123456789'  # Updated
-
-DEBUG = True
-ALLOWED_HOSTS = []
+# Security settings
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-abcdefghijklmnopqrstuvwxyz0123456789')
+DEBUG = os.getenv('DEBUG', 'False') == 'True'  # False in production via env var
+ALLOWED_HOSTS = ['*']  # Update to ['tinylane-backend.onrender.com'] after deployment
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -17,7 +19,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    'backend',  # Must be here
+    'backend',  # Your app
+    'django_celery_beat',  # For Celery Beat
 ]
 
 MIDDLEWARE = [
@@ -51,11 +54,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
+# Database (Render PostgreSQL)
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.parse(os.getenv('DATABASE_URL'), conn_max_age=600)
 }
 
 REST_FRAMEWORK = {
@@ -63,19 +64,37 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',  # Changed to AllowAny
+        'rest_framework.permissions.AllowAny',  # Keep as AllowAny for now
     ],
 }
 
+# CORS for Vercel frontend
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
+    "https://tinylane.vercel.app",  # Your Vercel frontend URL
 ]
+
+# Celery settings (Render Redis)
+CELERY_BROKER_URL = os.getenv('REDIS_URL')
+CELERY_RESULT_BACKEND = os.getenv('REDIS_URL')
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+CELERY_BEAT_SCHEDULE = {
+    'delete-expired-urls-every-minute': {
+        'task': 'backend.tasks.delete_expired_urls',  # Adjust to your app’s task path
+        'schedule': 60.0,  # Every minute
+    },
+}
+
+# Static files
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
-STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGGING = {
@@ -91,6 +110,3 @@ LOGGING = {
         'level': 'DEBUG',
     },
 }
-
-TIME_ZONE = 'UTC'
-USE_TZ = True  # Should already be True by default

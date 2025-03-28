@@ -4,4 +4,6 @@ django-cors-headers==4.3.1
 celery==5.3.6
 redis==5.0.1
 django-celery-beat==2.5.0
-mysqlclient==2.2.4
+psycopg2-binary==2.9.9  # For PostgreSQL
+gunicorn==23.0.0        # Production WSGI server
+dj-database-url==2.2.0  # Parse DATABASE_URL
