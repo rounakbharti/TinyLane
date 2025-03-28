@@ -5,6 +5,19 @@ TinyLane is a URL shortening service similar to Bit.ly, designed to transform lo
 ## 🔗 Live Demo
 - **Live Version**: [https://tinylane.vercel.app/](https://tinylane.vercel.app/)
 
+## 📸 Demo Screenshots
+| Feature          | Image |
+|-----------------|-------|
+| SignUp       | ![Homepage](demo/img1.png) |
+| Short URL Output| ![Short URL](demo/img2.png) |
+| URL History     | ![History](demo/img3.png) |
+| Analytics       | ![Analytics](demo/img4.png) |
+| Click Details   | ![Click Logs](demo/img5.png) |
+| Expiration Set  | ![Expiration](demo/img6.png) |
+| Expired URL     | ![Expired](demo/img7.png) |
+| Admin Panel     | ![Admin](demo/img8.png) |
+
+
 ## 🎯 Objective
 Build a URL shortener where users can:
 - Enter a long URL and receive a short, unique URL (e.g., `tinylane.vercel.app/abc123`).
@@ -50,18 +63,6 @@ TinyLane/
 │   └── requirements.txt
 └── README.md
 ```
-
-## 📸 Demo Screenshots
-| Feature          | Image |
-|-----------------|-------|
-| Homepage        | ![Homepage](demo/img1.png) |
-| Short URL Output| ![Short URL](demo/img2.png) |
-| URL History     | ![History](demo/img3.png) |
-| Analytics       | ![Analytics](demo/img4.png) |
-| Click Details   | ![Click Logs](demo/img5.png) |
-| Expiration Set  | ![Expiration](demo/img6.png) |
-| Expired URL     | ![Expired](demo/img7.png) |
-| Admin Panel     | ![Admin](demo/img8.png) |
 
 ## 🚀 Setup Instructions
 
