@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import App from './App.jsx';
 import Signup from './Signup.jsx';
 import Login from './Login.jsx';
-import Shorten from './Shorten.jsx';
+import Shorten from './shorten.jsx';
 import Analytics from './Analytics.jsx';
 import './index.css';
 
