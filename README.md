@@ -52,16 +52,41 @@ Build a URL shortener where users can:
 
 ## 📂 Project Structure
 ```
-TinyLane/
-├── frontend/           # React frontend code
-│   ├── src/
-│   └── package.json
-├── backend/            # Django backend code
-│   ├── backend/        # Django project settings
-│   ├── shortener/      # Django app for URL logic
+URL_Shortener/
+├── backend/
+│   ├── backend/                  # Django project
+│   │   ├── management/
+│   │   ├── migrations/
+│   │   ├── media/qr_codes/
+│   │   ├── settings.py
+│   │   ├── views.py
+│   │   ├── models.py
+│   │   ├── urls.py
+│   │   ├── tasks.py
+│   │   └── celery_config.py
 │   ├── manage.py
-│   └── requirements.txt
+│   ├── Dockerfile
+│   ├── requirements.txt
+│   ├── .env
+│   └── db.sqlite3
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/ui/
+│   │   │   ├── ShortenForm.jsx
+│   │   │   └── UrlList.jsx
+│   │   ├── App.jsx
+│   │   ├── Login.jsx
+│   │   ├── Signup.jsx
+│   │   └── api.js
+│   ├── tailwind.config.js
+│   ├── vite.config.js
+│   ├── package.json
+│   └── index.html
+│
+├── docker-compose.yml
 └── README.md
+
 ```
 
 ## 🚀 Setup Instructions
@@ -76,7 +101,7 @@ TinyLane/
 ### 🔧 Backend Setup (Local)
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/TinyLane.git
+   git clone https://github.com/rounakbharti/TinyLane.git
    cd TinyLane/backend
    ```
 2. Create and activate a virtual environment:
